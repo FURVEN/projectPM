@@ -128,7 +128,7 @@
 	  var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
-    	  	  googleCalendarApiKey : 'AIzaSyANToAe7HYMrFxgI4_lakop2Bgj_JWiqzE',
+    	  	  googleCalendarApiKey : '', // 구글 캘린더 API 키
           selectable: true,
           themeSystem: 'Litera',
           dayMaxEventRows: true,

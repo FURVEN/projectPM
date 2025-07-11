@@ -179,7 +179,7 @@ PM/
 
 2. **데이터베이스 설정**
    - Oracle Database 설치 및 설정
-   - 데이터베이스 연결 정보 설정 (`src/main/resources/`)
+   - 데이터베이스 연결 정보를 별도 설정 파일에 구성
 
 3. **Maven 의존성 설치**
    ```bash
@@ -202,12 +202,7 @@ PM/
 - Build Path: Maven Dependencies
 
 ### 데이터베이스 설정
-```xml
-<!-- src/main/resources/spring/database-config.xml -->
-<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-<property name="username" value="your_username"/>
-<property name="password" value="your_password"/>
-```
+데이터베이스 연결 정보는 별도의 환경 변수 또는 설정 파일을 통해 관리하세요.
 
 ## 📝 라이선스
 

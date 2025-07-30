@@ -1,4 +1,4 @@
-# 📊 Project Management System (PM) - 코드 주석 추가 완료
+# 📊 Project Management System (PM) - 코드 주석 추가
 
 ## 🚀 프로젝트 소개
 

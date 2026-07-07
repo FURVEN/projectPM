@@ -20,6 +20,7 @@ import com.project.pm.notice.model.NoticeDAO;
 import com.project.pm.notice.model.*;
 import com.project.pm.notice.service.NoticeService;
 import com.project.pm.employee.model.EmpVO;
+import com.project.pm.common.SessionConst;
 
 
 @Controller
@@ -170,7 +171,7 @@ public class NoticeController {
         }
         // ===  첨부파일 있는 경우 작업 끝 !!! === //
 
-    	EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+    	EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
  		noticevo.setFk_senderno(loginuser.getEmpno()); // 작성 -> vo 인서트
  		
  		
@@ -239,12 +240,12 @@ public class NoticeController {
 	    loginuser.setFk_deptno("106"); // 사원번호
 	      
 	    HttpSession session = request.getSession();
-	    session.setAttribute("loginuser", loginuser);
+	    session.setAttribute(SessionConst.LOGIN_USER, loginuser);
 	    */
 	    // 가라세션 끝
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		String empno = loginuser.getEmpno();
 		request.setAttribute("empno", empno);
@@ -607,7 +608,7 @@ public class NoticeController {
 //		NoticeVO editNoticevo = service.getEditNotice(notino);
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		noticevo.setFk_senderno(loginuser.getEmpno());
 		
@@ -671,7 +672,7 @@ public class NoticeController {
       paraMap.put("fk_senderno", fk_senderno);
       
       HttpSession session = request.getSession();
-	  EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+	  EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 	  
 	  String empno = loginuser.getEmpno();
 	  request.setAttribute("empno", empno);
@@ -777,7 +778,7 @@ public class NoticeController {
 		String cmtno = request.getParameter("cmtno");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		
@@ -809,7 +810,7 @@ public class NoticeController {
 		String notino = request.getParameter("notino");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		
@@ -850,7 +851,7 @@ public class NoticeController {
 	public ModelAndView depNoticeList(HttpServletRequest request, ModelAndView mav, NoticeVO noticevo) {
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 	
 		String empno = loginuser.getEmpno();
 		request.setAttribute("empno", empno);
@@ -1121,7 +1122,7 @@ public class NoticeController {
 //		System.out.println("부서수정번호 : "+ notino);
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		noticevo.setFk_senderno(loginuser.getEmpno());
 		
@@ -1161,7 +1162,7 @@ public class NoticeController {
       paraMap.put("fk_senderno", fk_senderno);
       
       HttpSession session = request.getSession();
-	  EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+	  EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 	  
 	  String empno = loginuser.getEmpno();
 	  request.setAttribute("empno", empno);
@@ -1266,7 +1267,7 @@ public class NoticeController {
 		String cmtno = request.getParameter("cmtno");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		
@@ -1295,7 +1296,7 @@ public class NoticeController {
 		String notino = request.getParameter("notino");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		
@@ -1435,7 +1436,7 @@ public class NoticeController {
 		
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		String empno = loginuser.getEmpno();
 		request.setAttribute("empno", empno);
 		
@@ -1701,7 +1702,7 @@ public class NoticeController {
 //		System.out.println("수정번호 : "+ notino);
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		noticevo.setFk_senderno(loginuser.getEmpno());
 		
@@ -1742,7 +1743,7 @@ public class NoticeController {
       paraMap.put("fk_senderno", fk_senderno);
       
       HttpSession session = request.getSession();
-	  EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+	  EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 	  
 	  String empno = loginuser.getEmpno();
 	  request.setAttribute("empno", empno);
@@ -1842,7 +1843,7 @@ public class NoticeController {
 		String cmtno = request.getParameter("cmtno");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		
@@ -1871,7 +1872,7 @@ public class NoticeController {
 		String notino = request.getParameter("notino");
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
+		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 		
 		commentvo.setFk_empno(loginuser.getEmpno());
 		

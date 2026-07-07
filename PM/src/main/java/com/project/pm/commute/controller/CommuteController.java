@@ -26,6 +26,7 @@ import com.project.pm.commute.model.CommuteVO;
 import com.project.pm.commute.service.CommuteService;
 import com.project.pm.employee.model.EmpVO;
 import com.project.pm.parameter.controller.ParameterStringBuilder;
+import com.project.pm.common.SessionConst;
 
 @Controller
 public class CommuteController {
@@ -39,7 +40,7 @@ public class CommuteController {
 		public String commuteStart(HttpServletRequest request) {
 
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO)session.getAttribute("loginuser");
+			EmpVO loginuser = (EmpVO)session.getAttribute(SessionConst.LOGIN_USER);
 			String name = loginuser.getName();
 			
 			String fk_empno = request.getParameter("fk_empno");
@@ -98,7 +99,7 @@ public class CommuteController {
 		public String commuteEnd(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO)session.getAttribute("loginuser");
+			EmpVO loginuser = (EmpVO)session.getAttribute(SessionConst.LOGIN_USER);
 			String name = loginuser.getName();
 			
 			String fk_empno = request.getParameter("fk_empno");
@@ -132,7 +133,7 @@ public class CommuteController {
 		public String mycommute(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO evo = (EmpVO) session.getAttribute("loginuser");
+			EmpVO evo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
 			String empno = evo.getEmpno();
 			//System.out.println("확인용 empno => " + empno);
 			

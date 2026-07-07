@@ -12,7 +12,12 @@
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-   
+
+   <!-- 서블릿 컨텍스트는 루트 컨텍스트와 별도이므로 플레이스홀더 설정도 각자 필요하다.
+        비밀값 주입 방법은 root-context.xml 의 주석 참조. -->
+   <context:property-placeholder location="classpath:application-local.properties"
+                                 ignore-resource-not-found="true" />
+
    <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
     
@@ -62,12 +67,12 @@
         <beans:property name="maxUploadSize" value="10485760" />
    </beans:bean> 
     
-    <!-- === #44. 양방향 암호화 알고리즘인 AES256 를 사용하여 복호화 하기 위한 클래스(파라미터가 있는 생성자) 의존객체 bean 생성하기 === --> 
+    <!-- === #44. 양방향 암호화 알고리즘인 AES256 를 사용하여 복호화 하기 위한 클래스(파라미터가 있는 생성자) 의존객체 bean 생성하기 === -->
+    <!-- 키는 16자 이상이어야 하며(AES256 생성자가 앞 16자를 IV로 사용) 절대 커밋하지 않는다.
+         기존에 커밋되어 있던 키로 암호화된 데이터가 DB에 있다면 동일한 키를 로컬 설정에 넣어야 복호화가 유지된다. -->
      <beans:bean id="aes" class="com.project.pm.common.AES256">
-       <beans:constructor-arg>
-          <beans:value>abcd0070#aclass$</beans:value>  
-       </beans:constructor-arg>
-    </beans:bean> 
+       <beans:constructor-arg value="${pm.crypto.aes-key}" />
+    </beans:bean>
     
    
    <!-- ==== #18. bean으로 등록될 @Component 클래스가 위치하는 패키지명 지정하기 ====  -->

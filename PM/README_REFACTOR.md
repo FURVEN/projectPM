@@ -5,6 +5,7 @@
 
 문서 세트:
 
+- [docs/learning/README.md](docs/learning/README.md) — **비전공자용 구조 학습 가이드** (도식 + 비유 + 코드 따라 읽기)
 - [docs/refactor/00-current-state.md](docs/refactor/00-current-state.md) — 리팩토링 전 상태 진단
 - [docs/refactor/01-dependency-review.md](docs/refactor/01-dependency-review.md) — 의존성 전수 리뷰
 - [docs/refactor/02-modernization-roadmap.md](docs/refactor/02-modernization-roadmap.md) — 개선 내역과 다음 단계

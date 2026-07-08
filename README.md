@@ -262,6 +262,13 @@ PM/
 - 실행 가이드/요약: [PM/README_REFACTOR.md](PM/README_REFACTOR.md)
 - 진단/리뷰/로드맵: [PM/docs/refactor/](PM/docs/refactor/)
 
+## 📚 처음 오신 분 (비전공자 학습 가이드)
+
+시스템 구조가 처음이라면, 도식과 비유로 요청 흐름·3계층 구조·로그인 동작을
+따라가며 배우는 학습 가이드부터 읽어보세요.
+
+- [PM/docs/learning/README.md](PM/docs/learning/README.md)
+
 ## 📝 라이선스
 
 이 프로젝트는 개인 학습 및 포트폴리오 목적으로 작성되었습니다.

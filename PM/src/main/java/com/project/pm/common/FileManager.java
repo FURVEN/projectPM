@@ -1,11 +1,9 @@
 package com.project.pm.common;
 import java.awt.image.BufferedImage;
-import java.awt.image.renderable.ParameterBlock;
 import java.io.*;
 import java.util.Calendar;
 
-import javax.media.jai.JAI;
-import javax.media.jai.RenderedOp;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
@@ -190,43 +188,30 @@ public class FileManager {
 	
 	
 	// 이미지 폭
+	// (과거에는 JAI 라이브러리를 사용했으나, JAI 는 Maven Central 에 없는 서드파티 저장소 전용
+	//  아티팩트여서 빌드 재현성을 해치므로 JDK 표준 ImageIO 로 대체함. 반환 규약은 동일: 실패 시 -1)
 	public int getImageWidth(String pathname) {
-	   int width=-1;
-		
-	   File file = new File(pathname);
-	   
-	   if (! file.exists())
-		return width;
-		
-	   ParameterBlock pb=new ParameterBlock(); 
-           pb.add(pathname); 
-           RenderedOp rOp=JAI.create("fileload",pb); 
-
-           BufferedImage bi=rOp.getAsBufferedImage(); 
-
-           width = bi.getWidth(); 		
-		
-	   return width;
+	   BufferedImage bi = readImage(pathname);
+	   return bi == null ? -1 : bi.getWidth();
 	}
-		
+
 	// 이미지 높이
 	public int getImageHeight(String pathname) {
-	   int height=-1;
-		
+	   BufferedImage bi = readImage(pathname);
+	   return bi == null ? -1 : bi.getHeight();
+	}
+
+	private static BufferedImage readImage(String pathname) {
 	   File file = new File(pathname);
-	   
+
 	   if (! file.exists())
-		return height;
-		
-	   ParameterBlock pb=new ParameterBlock(); 
-           pb.add(pathname); 
-           RenderedOp rOp=JAI.create("fileload",pb); 
+		return null;
 
-           BufferedImage bi=rOp.getAsBufferedImage(); 
-
-           height = bi.getHeight();		
-		
-	   return height;
+	   try {
+		return ImageIO.read(file); // 지원하지 않는 포맷이면 null
+	   } catch (IOException e) {
+		return null;
+	   }
 	}
 	
 	

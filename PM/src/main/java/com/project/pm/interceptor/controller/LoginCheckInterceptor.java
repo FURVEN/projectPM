@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import com.project.pm.common.SessionConst;
 
 public class LoginCheckInterceptor implements HandlerInterceptor {
 	
@@ -20,7 +21,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		// 로그인 여부 검사
 		HttpSession session = request.getSession();
 	      
-	      if(session.getAttribute("loginuser") == null) {
+	      if(session.getAttribute(SessionConst.LOGIN_USER) == null) {
 	         
 	         //로그인이 되지 않은 상태
 	         String message = "로그인 후 접근 가능한 페이지입니다.";

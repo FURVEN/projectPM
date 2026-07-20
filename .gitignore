@@ -99,9 +99,3 @@ replay_pid*
 /PMproject/target/
 /PMproject/NCS/
 *.sql
-
-### Maven build output ###
-target/
-
-### Local private configuration (never commit real credentials) ###
-application-local.properties

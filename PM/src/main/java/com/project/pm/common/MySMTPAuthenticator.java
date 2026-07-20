@@ -10,9 +10,10 @@ public class MySMTPAuthenticator extends Authenticator {
 
 	@Override
 	public PasswordAuthentication getPasswordAuthentication() {
-
-		// 계정/앱비밀번호는 하드코딩하지 않고 시스템 프로퍼티 또는 환경변수에서 읽는다. (MailConfig 참조)
-		return new PasswordAuthentication(MailConfig.smtpUser(), MailConfig.smtpPassword());
+		
+		// Gmail 의 경우 @gmail.com 을 제외한 아이디만 입력한다.
+		return new PasswordAuthentication("testmail6007","qxyjhxbjpzzlfegh");
+		// "자기것" 은 Goole에 로그인 하기 위한 앱비밀번호 이다.
 	}
 	
 }

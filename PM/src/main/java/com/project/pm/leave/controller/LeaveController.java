@@ -29,7 +29,6 @@ import com.project.pm.common.FileManager;
 import com.project.pm.employee.model.EmpVO;
 import com.project.pm.leave.service.LeaveService;
 import com.project.pm.schedule.model.ScheduleDAO;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class LeaveController {
@@ -45,7 +44,7 @@ public class LeaveController {
 	public String checkAuthority(HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		List<String> adminEmpnoList = service.getAdminEmpnoList();
 
@@ -63,7 +62,7 @@ public class LeaveController {
 	public ModelAndView leaveSummary(HttpServletRequest request, ModelAndView mav) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		Calendar currentDate = Calendar.getInstance();
 		SimpleDateFormat dateft = new SimpleDateFormat("yyyy");
@@ -102,7 +101,7 @@ public class LeaveController {
 			loginuser.setEmpno(empno);
 		} else {
 			HttpSession session = request.getSession();
-			loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			loginuser = (EmpVO) session.getAttribute("loginuser");
 		}
 		
 
@@ -140,7 +139,7 @@ public class LeaveController {
 	public void addSchedule_requestLeave( Map<String, String> paraMap, MultipartHttpServletRequest mrequest) throws ParseException {
 
 		HttpSession session = mrequest.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		String pk_leave_type = mrequest.getParameter("pk_leave_type");
 		String start_date = mrequest.getParameter("start_date");
@@ -235,7 +234,7 @@ public class LeaveController {
 			loginuser.setEmpno(empno);
 		} else {
 			HttpSession session = request.getSession();
-			loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			loginuser = (EmpVO) session.getAttribute("loginuser");
 		}
 
 		String year = request.getParameter("year");
@@ -285,7 +284,7 @@ public class LeaveController {
 			loginuser.setEmpno(empno);
 		} else {
 			HttpSession session = request.getSession();
-			loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			loginuser = (EmpVO) session.getAttribute("loginuser");
 		}
 
 		String year = request.getParameter("year");
@@ -496,7 +495,7 @@ public class LeaveController {
 		service.approvalRequestLevae(leaveRequestDetail); 
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		
 		// 승인일때 소식
 		if("1".equals(request.getParameter("approval_status"))) {
@@ -528,7 +527,7 @@ public class LeaveController {
 	public String empLeaveStatus(HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		// 관리자의 부서번호를 통해서 아래부서를 다 알아온다
 		List<String> deptnoList = service.getLowerDeptnoList(loginuser.getFk_deptno());
@@ -553,7 +552,7 @@ public class LeaveController {
 	public String empLeaveUsingList(HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		// 관리자의 부서번호를 통해서 아래부서를 다 알아온다
 		List<String> deptnoList = service.getLowerDeptnoList(loginuser.getFk_deptno());
@@ -582,7 +581,7 @@ public class LeaveController {
 	public void addAlarm_promoteAnnual(Map<String, String> paraMap, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 
 		String empno = request.getParameter("empno");
 

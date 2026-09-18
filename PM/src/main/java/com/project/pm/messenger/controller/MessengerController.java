@@ -29,7 +29,6 @@ import com.project.pm.employee.model.EmpVO;
 import com.project.pm.file.model.FileVO;
 import com.project.pm.messenger.model.MessengerVO;
 import com.project.pm.messenger.service.MessengerService;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class MessengerController {
@@ -46,7 +45,7 @@ public class MessengerController {
 		public String getUnreadMsgCnt(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			String n = service.getUnreadMsgCnt(loginuser.getEmpno());
 			
@@ -63,7 +62,7 @@ public class MessengerController {
 		public ModelAndView sentMessage( HttpServletRequest request, ModelAndView mav) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO)session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO)session.getAttribute("loginuser");
 			
 			// === #114. 페이징 처리를 한 검색어가 있는 전체 글목록 보여주기 시작 === //
 			/*
@@ -259,7 +258,7 @@ public class MessengerController {
 		public ModelAndView receivedMessage( HttpServletRequest request, ModelAndView mav) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO)session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO)session.getAttribute("loginuser");
 			
 			// empno 넘어오면 request 영역에 담아줘야 한다
 			String empno = request.getParameter("empno"); 
@@ -597,7 +596,7 @@ public class MessengerController {
 		public void updateAllMsg (HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			service.updateAllMsgStatus(loginuser.getEmpno());
 		}
@@ -633,7 +632,7 @@ public class MessengerController {
 			String deptno = request.getParameter("deptno");
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("deptno", deptno);
@@ -663,7 +662,7 @@ public class MessengerController {
 			String deptno = request.getParameter("deptno");
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("deptno", deptno);
@@ -749,7 +748,7 @@ public class MessengerController {
 			String time = dateft.format(currentDate.getTime());
 			
 			HttpSession session = mrequest.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			msgvo.setFk_senderno(loginuser.getEmpno());
 			
 			// 첨부파일 여부
@@ -845,7 +844,7 @@ public class MessengerController {
 			MessengerVO deliverMsgvo = service.getDeliverMsg(msgno); // 원본 메신저 조회하기
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			msgvo.setFk_senderno(loginuser.getEmpno());
 			

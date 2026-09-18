@@ -18,7 +18,6 @@ import com.project.pm.employee.model.EmpVO;
 import com.project.pm.member.model.MemberVO;
 import com.project.pm.schedule.model.ScheduleVO;
 import com.project.pm.schedule.service.ScheduleService;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class ScheduleController {
@@ -69,7 +68,7 @@ public class ScheduleController {
 		String category = scvo.getCategory();
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String name = empvo.getName();
 		
 		String joinuser_empno = request.getParameter("joinuser_empno");
@@ -115,7 +114,7 @@ public class ScheduleController {
 	public String addAlarm_updateSchedule(Map<String, String> paraMap, HttpServletRequest request, ScheduleVO scvo) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String name = empvo.getName();
 		
 		String category = scvo.getCategory();

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.pm.alarm.model.AlarmVO;
 import com.project.pm.alarm.service.AlarmService;
 import com.project.pm.employee.model.EmpVO;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class AlarmController {
@@ -30,7 +29,7 @@ public class AlarmController {
 		public String getDept(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			List<AlarmVO> alarmList = service.getAlarmList(loginuser.getEmpno());
 			
@@ -59,7 +58,7 @@ public class AlarmController {
 		public String getPastAlarmList(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			List<AlarmVO> alarmList = service.getPastAlarmList(loginuser.getEmpno());
 			
@@ -99,7 +98,7 @@ public class AlarmController {
 		public void readAllAlarm(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			service.readAllAlarm(loginuser.getEmpno());
 			
@@ -112,7 +111,7 @@ public class AlarmController {
 		public String getUnreadAlarmCnt(HttpServletRequest request) {
 			
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			
 			String n = service.getUnreadAlarmCnt(loginuser.getEmpno());
 			

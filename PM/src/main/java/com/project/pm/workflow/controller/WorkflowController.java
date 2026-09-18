@@ -27,7 +27,6 @@ import com.project.pm.common.FileManager;
 import com.project.pm.employee.model.EmpVO;
 import com.project.pm.workflow.model.DocumentVO;
 import com.project.pm.workflow.service.WorkflowService;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class WorkflowController {
@@ -42,7 +41,7 @@ public class WorkflowController {
 	public String viewWorkflow(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		
 		//페이지 로드 첫번째 문서번호 알아오기(최신순)
 		String empno = loginuser.getEmpno();	
@@ -86,7 +85,7 @@ public class WorkflowController {
 	public String viewCpWorkflow(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		
 		//페이지 로드 첫번째 문서번호 알아오기(최신순)
 		String empno = loginuser.getEmpno();	
@@ -466,7 +465,7 @@ public class WorkflowController {
 	public String approvalDu(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO)session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO)session.getAttribute("loginuser");
 		
 		String approvalNo = request.getParameter("approval");
 		String doc_no = request.getParameter("doc_no");
@@ -537,7 +536,7 @@ public class WorkflowController {
 		
 		//세션 값 받아오기 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		
 		//null 일떄 처리해주기
 		String deptno = loginuser.getFk_deptno();
@@ -709,7 +708,7 @@ public class WorkflowController {
 			paraMap.put("attach", "yes");
 		}
 		
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		String name = loginuser.getName();
 		docvo.setName(name);
 		
@@ -754,7 +753,7 @@ public class WorkflowController {
 	public String modifyWorkflow(HttpServletRequest request, DocumentVO docvo) {
 
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		String deptno = loginuser.getFk_deptno();
 		String empno = loginuser.getEmpno();
 		
@@ -888,7 +887,7 @@ public class WorkflowController {
 		
 		//세션값 가져오기
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		String empno = loginuser.getEmpno();
 		//System.out.println("empno:" +empno);
 		
@@ -995,7 +994,7 @@ public class WorkflowController {
 		
 		//세션값 가져오기
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		String empno = loginuser.getEmpno();
 		//System.out.println("empno:" +empno);
 		
@@ -1186,7 +1185,7 @@ public class WorkflowController {
 		
 		//세션값 가져오기
 		HttpSession session = request.getSession();
-		EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 		String empno = loginuser.getEmpno();
 		//System.out.println("empno:" +empno);
 		
@@ -1337,7 +1336,7 @@ public class WorkflowController {
 			
 			//세션값 가져오기
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			String empno = loginuser.getEmpno();
 			paraMap.put("empno",empno);
 			
@@ -1364,7 +1363,7 @@ public class WorkflowController {
 			
 			//세션값 가져오기
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			String empno = loginuser.getEmpno();
 			paraMap.put("empno",empno);
 			
@@ -1390,7 +1389,7 @@ public class WorkflowController {
 			
 			//세션값 가져오기
 			HttpSession session = request.getSession();
-			EmpVO loginuser = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+			EmpVO loginuser = (EmpVO) session.getAttribute("loginuser");
 			String emp_no = loginuser.getEmpno();
 			paraMap.put("emp_no",emp_no);
 		

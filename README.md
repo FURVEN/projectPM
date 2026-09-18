@@ -248,19 +248,7 @@ PM/
 - Build Path: Maven Dependencies
 
 ### 데이터베이스 설정
-데이터베이스 연결 정보는 커밋되지 않는 로컬 설정 파일로 관리합니다.
-`PM/src/main/resources/application-local.example.properties` 를
-`application-local.properties` 로 복사한 뒤 값을 채우세요.
-(환경변수 `PM_DATASOURCE_USERNAME` 등으로도 주입 가능)
-
-## 🔨 레거시 안정화 리팩토링
-
-이 저장소는 레거시 Spring MVC 코드베이스를 동작 보존 원칙 하에 단계적으로
-안정화하는 리팩토링을 진행 중입니다. 설정 외부화, 로그인 모듈 정리,
-의존성 정리, 회귀 테스트, 현대화 로드맵은 아래 문서를 참고하세요.
-
-- 실행 가이드/요약: [PM/README_REFACTOR.md](PM/README_REFACTOR.md)
-- 진단/리뷰/로드맵: [PM/docs/refactor/](PM/docs/refactor/)
+데이터베이스 연결 정보는 별도의 환경 변수 또는 설정 파일을 통해 관리하세요.
 
 ## 📝 라이선스
 

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.pm.commute.model.CommuteDAO;
 import com.project.pm.commute.service.CommuteService;
 import com.project.pm.employee.model.EmpVO;
-import com.project.pm.common.SessionConst;
 
 @Controller
 public class AdminController {
@@ -55,7 +54,7 @@ public class AdminController {
 	public String selectCommuteList(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "arrDept[]", required = false) List<String> arrDept) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String empno = empvo.getEmpno();
 		
 		JSONArray jsonArr = new JSONArray();
@@ -168,7 +167,7 @@ public class AdminController {
 	public String payStub(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String empno = empvo.getEmpno();
 		
 		String select_year = request.getParameter("select-year");
@@ -241,7 +240,7 @@ public class AdminController {
 	public String severance_pay(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String empno = empvo.getEmpno();
 		
 		if(!empno.equals("9999")) { // 관리자가 아닌데 접근했을 경우
@@ -283,7 +282,7 @@ public class AdminController {
 	public String payment(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String empno = empvo.getEmpno();
 		
 		if(!empno.equals("9999")) { // 관리자가 아닌데 접근했을 경우
@@ -312,7 +311,7 @@ public class AdminController {
 	public String getPaymentList(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "arrDept[]", required = false) List<String> arrDept) {
 		
 		HttpSession session = request.getSession();
-		EmpVO empvo = (EmpVO) session.getAttribute(SessionConst.LOGIN_USER);
+		EmpVO empvo = (EmpVO) session.getAttribute("loginuser");
 		String empno = empvo.getEmpno();
 		
 		JSONArray jsonArr = new JSONArray();
